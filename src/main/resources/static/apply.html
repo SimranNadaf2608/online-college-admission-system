@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University Application Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/apply.css">
+</head>
+<body>
+
+<!-- NAVBAR (PASTE FROM HOME PAGE) -->
+<!-- ============================ -->
+<nav>
+    <h2>Simran Engineering College</h2>
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/admission.html">Admission</a></li>
+        <li><a href="/departments.html">Departments</a></li>
+        <li><a href="/achievements.html">Achievements</a></li>
+    </ul>
+</nav>
+<!-- ============================ -->
+
+<h2 class="apply-title">Application for University</h2>
+<p class="subtitle">Please fill out the application form carefully</p>
+<div class="form-wrapper">
+
+    <form class="application-form" name = "applicationForm" id="applicationForm" novalidate>
+
+        <!-- Course -->
+        <div class="row">
+            <div class="form-field">
+                <label>Course</label><span>:</span>
+                <select name="course" required>
+                    <option value="">Select</option>
+                    <option value="UG">UG</option>
+                    <option value="PG">PG</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label>Branch</label><span>:</span>
+                <select type="text" name="branch" placeholder="Branch" required>
+                    <option value="">Select</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ME">ME</option>
+                    <option value="ECE">ECE</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Student Details -->
+        <h3 class="stu-details">Student Details</h3>
+
+        <div class="row">
+            <div class="form-field">
+                <label>First Name</label><span>:</span>
+                <input type="text" placeholder="Enter first name" required name="firstName">
+            </div>
+
+            <div class="form-field">
+                <label>Last Name</label><span>:</span>
+                <input type="text" placeholder="Enter last name" required name="lastName">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Date of Birth</label><span>:</span>
+                <input type="date"  name="dob">
+            </div>
+
+            <div class="form-field">
+                <label>Gender</label><span>:</span>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Phone Number</label><span>:</span>
+                <input type="tel" placeholder="Enter phone number" required name="phone">
+            </div>
+
+            <div class="form-field">
+                <label>Email ID</label><span>:</span>
+                <input type="email" placeholder="Enter email address" required name="email">
+            </div>
+        </div>
+
+        <!-- Parents Details -->
+        <h3 class="stu-details">Parents Details</h3>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Father Name</label><span>:</span>
+                <input type="text" placeholder="Enter father name" required name="fatherName">
+            </div>
+
+            <div class="form-field">
+                <label>Mother Name</label><span>:</span>
+                <input type="text" placeholder="Enter mother name" required name="motherName">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Father Phone</label><span>:</span>
+                <input type="tel" placeholder="Enter phone number" required name="fatherPhone">
+            </div>
+
+            <div class="form-field">
+                <label>Mother Phone</label><span>:</span>
+                <input type="tel" placeholder="Enter phone number" name="motherPhone">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Father Email</label><span>:</span>
+                <input type="email" placeholder="Enter email" name="fatherEmail">
+            </div>
+
+            <div class="form-field">
+                <label>Mother Email</label><span>:</span>
+                <input type="email" placeholder="Enter email" name="motherEmail">
+            </div>
+        </div>
+
+        <!-- Education Background -->
+        <h3 class="stu-details">Education Background</h3>
+
+        <div class="row">
+            <div class="form-field">
+                <label>College (PU/Diploma)</label><span>:</span>
+                <input type="text" placeholder="School / College name" required name="college">
+            </div>
+
+            <div class="form-field">
+                <label>Study Field</label><span>:</span>
+                <input type="text" placeholder="Science / Commerce / Diploma" required name="studyField">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Date of Graduation</label><span>:</span>
+                <input type="date" required name="dateOfGrad">
+            </div>
+
+            <div class="form-field">
+                <label>GPA / Percentage</label><span>:</span>
+                <input type="text" placeholder="Enter GPA or %" required name="GPAPercentage">
+            </div>
+        </div>
+
+        <!-- Address -->
+        <h3 class="stu-details">Address</h3>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Address Line 1</label><span>:</span>
+                <input type="text" placeholder="House No, Street" required name="addressLine1">
+            </div>
+
+            <div class="form-field">
+                <label>Address Line 2</label><span>:</span>
+                <input type="text" placeholder="Area / Landmark" name="addressLine2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>City</label><span>:</span>
+                <input type="text" placeholder="City" required name="city">
+            </div>
+
+            <div class="form-field">
+                <label>State</label><span>:</span>
+                <input type="text" placeholder="State" required name="state">
+            </div>
+
+            <div class="form-field">
+                <label>Country</label><span>:</span>
+                <input type="text" placeholder="Country" required name="country">
+            </div>
+
+            <div class="form-field">
+                <label>Pin Code</label><span>:</span>
+                <input type="text" placeholder="Pin code" required name="pinCode">
+            </div>
+        </div>
+
+        <!-- Upload Documents -->
+        <h3 class="stu-details">Upload Documents</h3>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Aadhar</label><span>:</span>
+                <input type="file"  name="aadhar">
+            </div>
+
+            <div class="form-field">
+                <label>Income Certificate</label><span>:</span>
+                <input type="file" name="income">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>SSLC Marks Card</label><span>:</span>
+                <input type="file"  name="sslc">
+            </div>
+
+            <div class="form-field">
+                <label>PUC/Diploma Marks Card</label><span>:</span>
+                <input type="file"  name="pucDiploma">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-field">
+                <label>Leaving Certificate</label><span>:</span>
+                <input type="file" name="leavingCertificate">
+            </div>
+        </div>
+
+        <!-- Rules -->
+        <h3 class="stu-details">Rules and Regulations</h3>
+
+        <div class="checkbox-field">
+            <input type="checkbox" >
+            <span>I agree to the rules and regulations of the university.</span>
+        </div>
+
+        <button type="button" onclick="submitApplication()">
+            Submit Application
+        </button>
+
+    </form>
+</div>
+
+<script>
+    function submitApplication() {
+
+        const form = document.getElementById("applicationForm");
+
+        if (!form) {
+            alert("Form not found");
+            return;
+        }
+
+        const data = {
+        course: form.elements["course"]?.value || "",
+        branch: form.elements["branch"]?.value || "",
+        firstName: form.elements["firstName"]?.value || "",
+        lastName: form.elements["lastName"]?.value || "",
+        phone: form.elements["phone"]?.value || "",
+        email: form.elements["email"]?.value || "",
+        city: form.elements["city"]?.value || "",
+        state: form.elements["state"]?.value || "",
+        country: form.elements["country"]?.value || "",
+        pincode: form.elements["pinCode"]?.value || "",
+        dob: form.elements["dob"]?.value || "",
+        fatherName: form.elements["fatherName"]?.value || "",
+        motherName: form.elements["motherName"]?.value || "",
+        gender: form.elements["gender"]?.value || "",
+        addressLine1: form.elements["addressLine2"]?.value || "",
+        addressLine2: form.elements["addressLine2"]?.value || "",
+        fatherPhone: form.elements["fatherPhone"]?.value || "",
+        motherPhone: form.elements["motherPhone"]?.value || "",
+        motherEmail: form.elements["motherEmail"]?.value || "",
+        fatherEmail: form.elements["fatherEmail"]?.value || ""
+        };
+
+        fetch("/api/applications", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Failed");
+            return res.json();
+        })
+        .then(() => {
+            alert("Application submitted successfully!");
+            form.reset();
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Submission failed");
+        });
+    }
+</script>
+
+
+</body>
+</html>
