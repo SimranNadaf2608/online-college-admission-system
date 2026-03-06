@@ -1,10 +1,400 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departments</title>
+    <title>Departments - Simran Engineering College</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Enhanced Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .search-box {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: #002244;
+        }
+        
+        /* Enhanced Department Cards */
+        .branch-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .branch-heading {
+            padding: 25px 30px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .branch-heading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .branch-card:hover .branch-heading::after {
+            left: 100%;
+        }
+        
+        .branch-content {
+            padding: 30px;
+            background: #fafbfc;
+        }
+        
+        .branch-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .branch-content ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .branch-content li {
+            background: white;
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .branch-content li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cse .branch-content li { border-left-color: #0055aa; }
+        .ece .branch-content li { border-left-color: #004d40; }
+        .mech .branch-content li { border-left-color: #ff9800; }
+        
+        /* Enhanced HOD Section */
+        .hod-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .hod-text h4 {
+            color: #003366;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .hod-text p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .hod-photo {
+            position: relative;
+        }
+        
+        .hod-photo img {
+            width: 120px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .hod-photo:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Stats Section */
+        .dept-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            padding: 0 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #003366;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #003366;
+            color: white;
+            border-color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,51,102,0.3);
+        }
+        
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .departments-container {
+                padding: 0 15px;
+            }
+            
+            .branch-heading {
+                font-size: 20px;
+                padding: 20px;
+            }
+            
+            .branch-content {
+                padding: 20px;
+            }
+            
+            .hod-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .dept-stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 20px;
+            }
+            
+            .filter-container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .branch-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .branch-card:nth-child(1) { animation-delay: 0.1s; }
+        .branch-card:nth-child(2) { animation-delay: 0.2s; }
+        .branch-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff9800;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #ff9800;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff9800;
+            padding-left: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff9800;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ff9800;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 
 <nav>
@@ -14,6 +404,7 @@
         <li><a href="/admission.html">Admission</a></li>
         <li><a href="/departments.html">Departments</a></li>
         <li><a href="/achievements.html">Achievements</a></li>
+        <li><a href="/apply.html">Apply Now</a></li>
     </ul>
 </nav>
 
@@ -29,12 +420,48 @@
     <p>Excellence in Education • Innovation • Leadership</p>
 </section>
 
+<!-- Search Section -->
+<div class="search-container">
+    <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search departments, courses, or faculty..." id="searchInput">
+        <button class="search-btn" onclick="searchDepartments()">🔍</button>
+    </div>
+</div>
+
+<!-- Filter Section -->
+<div class="filter-container">
+    <button class="filter-btn active" onclick="filterDepartments('all')">All Departments</button>
+    <button class="filter-btn" onclick="filterDepartments('cse')">Computer Science</button>
+    <button class="filter-btn" onclick="filterDepartments('ece')">Electronics</button>
+    <button class="filter-btn" onclick="filterDepartments('mech')">Mechanical</button>
+</div>
+
 <div class="departments-container">
 
     <!-- ================= CSE ================= -->
-    <div class="branch-card cse">
+    <div class="branch-card cse" data-department="cse">
         <div class="branch-heading">
             Computer Science & Engineering
+        </div>
+
+        <!-- Department Stats -->
+        <div class="dept-stats">
+            <div class="stat-item">
+                <div class="stat-number">180</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Faculty</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Placement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">Rating</div>
+            </div>
         </div>
 
         <div class="branch-content">
@@ -48,6 +475,8 @@
                 <li>Data Structures & Algorithms</li>
                 <li>Artificial Intelligence & Machine Learning</li>
                 <li>Cloud Computing & Web Technologies</li>
+                <li>Cybersecurity & Network Security</li>
+                <li>Blockchain & Web3 Development</li>
             </ul>
         </div>
 
@@ -57,6 +486,7 @@
                 <p><strong>Dr. R. Kumar</strong></p>
                 <p>Ph.D – Computer Science</p>
                 <p>15+ years of Academic & Research Experience</p>
+                <p>📧 hod.cse@simrancollege.edu</p>
             </div>
 
             <div class="hod-photo">
@@ -66,9 +496,29 @@
     </div>
 
     <!-- ================= ECE ================= -->
-    <div class="branch-card ece">
+    <div class="branch-card ece" data-department="ece">
         <div class="branch-heading">
             Electronics & Communication Engineering
+        </div>
+
+        <!-- Department Stats -->
+        <div class="dept-stats">
+            <div class="stat-item">
+                <div class="stat-number">150</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Faculty</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">88%</div>
+                <div class="stat-label">Placement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.6</div>
+                <div class="stat-label">Rating</div>
+            </div>
         </div>
 
         <div class="branch-content">
@@ -81,6 +531,8 @@
                 <li>Communication Systems</li>
                 <li>VLSI & Embedded Systems</li>
                 <li>Signal Processing</li>
+                <li>IoT & Smart Systems</li>
+                <li>Digital Signal Processing</li>
             </ul>
         </div>
 
@@ -90,6 +542,7 @@
                 <p><strong>Dr. S. Meenakshi</strong></p>
                 <p>Ph.D – Electronics Engineering</p>
                 <p>18+ years of Teaching Experience</p>
+                <p>📧 hod.ece@simrancollege.edu</p>
             </div>
 
             <div class="hod-photo">
@@ -99,9 +552,29 @@
     </div>
 
     <!-- ================= ME ================= -->
-    <div class="branch-card mech">
+    <div class="branch-card mech" data-department="mech">
         <div class="branch-heading">
             Mechanical Engineering
+        </div>
+
+        <!-- Department Stats -->
+        <div class="dept-stats">
+            <div class="stat-item">
+                <div class="stat-number">120</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Faculty</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Placement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.5</div>
+                <div class="stat-label">Rating</div>
+            </div>
         </div>
 
         <div class="branch-content">
@@ -114,6 +587,8 @@
                 <li>Design & Manufacturing</li>
                 <li>Thermal & Fluid Engineering</li>
                 <li>Automation & Robotics</li>
+                <li>CAD/CAM & CAE</li>
+                <li>Automotive Engineering</li>
             </ul>
         </div>
 
@@ -123,6 +598,7 @@
                 <p><strong>Dr. P. Srinivas</strong></p>
                 <p>Ph.D – Mechanical Engineering</p>
                 <p>20+ years of Industry & Academic Experience</p>
+                <p>📧 hod.mech@simrancollege.edu</p>
             </div>
 
             <div class="hod-photo">
@@ -133,25 +609,193 @@
 
 </div>
 
+<script>
+// Search functionality
+function searchDepartments() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.branch-card');
+    
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease forwards';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Filter functionality
+function filterDepartments(department) {
+    const cards = document.querySelectorAll('.branch-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    
+    // Update active button
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(department) || 
+            (department === 'all' && btn.textContent.includes('All'))) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Filter cards
+    cards.forEach(card => {
+        if (department === 'all' || card.dataset.department === department) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease forwards';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Real-time search
+document.getElementById('searchInput').addEventListener('input', searchDepartments);
+
+// Smooth scroll animation
+window.addEventListener('load', () => {
+    const cards = document.querySelectorAll('.branch-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.animation = `fadeInUp 0.6s ease forwards`;
+        }, index * 100);
+    });
+});
+</script>
+
+<!-- Modern Navbar Enhancement -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Set active link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || 
+            (currentPage === '' && href === '/index.html') ||
+            (currentPage === 'departments.html' && href === '/departments.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Scroll effect for navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.style.background = 'linear-gradient(135deg, rgba(0,51,102,0.95) 0%, rgba(0,85,170,0.95) 50%, rgba(0,51,102,0.95) 100%)';
+            navbar.style.backdropFilter = 'blur(15px)';
+            navbar.style.padding = '12px 40px';
+        } else {
+            navbar.style.background = 'linear-gradient(135deg, #003366 0%, #0055aa 50%, #003366 100%)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.padding = '18px 40px';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+        if (link.getAttribute('href').startsWith('#')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+    
+    // Add ripple effect on click
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.width = ripple.style.height = '40px';
+            ripple.style.top = (e.clientY - this.offsetTop - 20) + 'px';
+            ripple.style.left = (e.clientX - this.offsetLeft - 20) + 'px';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+<!-- Enhanced Footer -->
 <footer>
-    <div class="footer-section">
-        <h4>Quick Links</h4>
-        <a href="/index.html">Home</a>
-        <a href="/admission.html">Admission</a>
-        <a href="/departments.html">Departments</a>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Simran Engineering College</h3>
+            <p>Nurturing excellence in engineering education since 1985. Committed to innovation, research, and holistic development.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/admission.html">Admission</a></li>
+                <li><a href="/departments.html">Departments</a></li>
+                <li><a href="/achievements.html">Achievements</a></li>
+                <li><a href="/apply.html">Apply Now</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka 560001</p>
+            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+            <p><i class="fas fa-envelope"></i> info@simrancollege.edu</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Accreditation</h4>
+            <p>🏆 NAAC 'A+' Accredited</p>
+            <p>🔬 AICTE Approved</p>
+            <p>🎓 VTU Affiliated</p>
+            <p>🌍 ISO 9001:2015</p>
+        </div>
     </div>
-
-    <div class="footer-section">
-        <h4>Contact</h4>
-        <p>Email: info@simrancollege.edu</p>
-        <p>Phone: +91 98765 43210</p>
-    </div>
-
-    <div class="footer-section">
-        <h4>Follow Us</h4>
-        <p> Facebook </p>
-        <p>Twitter </p>
-        <p>Instagram</p>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Simran Engineering College. All rights reserved. | Privacy Policy | Terms of Service</p>
     </div>
 </footer>
 

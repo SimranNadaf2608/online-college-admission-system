@@ -1,8 +1,581 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admission | Simran Engineering College</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions 2026 - Simran Engineering College</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Enhanced Hero Section */
+        .admission-hero {
+            position: relative;
+            background: linear-gradient(135deg, #003366, #0055aa);
+            padding: 100px 40px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .admission-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/images/clg2.jpeg') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .admission-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .admission-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .admission-hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .hero-btn.primary {
+            background: #ff9800;
+            color: white;
+            box-shadow: 0 8px 25px rgba(255,152,0,0.3);
+        }
+        
+        .hero-btn.primary:hover {
+            background: #f57c00;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255,152,0,0.4);
+        }
+        
+        .hero-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .hero-btn.secondary:hover {
+            background: white;
+            color: #003366;
+            transform: translateY(-3px);
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff9800;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Admission Timeline */
+        .timeline-section {
+            padding: 80px 40px;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #003366;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-date {
+            background: #ff9800;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-title {
+            font-size: 22px;
+            color: #003366;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: #003366;
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px rgba(0,51,102,0.2);
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            padding: 80px 40px;
+            background: white;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .course-card {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+        
+        .course-card:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .course-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .course-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-list {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-list li {
+            background: rgba(255,255,255,0.1);
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            transition: all 0.3s ease;
+        }
+        
+        .course-list li:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        
+        /* Eligibility Section */
+        .eligibility-section {
+            padding: 80px 40px;
+            background: #f8fafc;
+        }
+        
+        .eligibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .eligibility-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .eligibility-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .eligibility-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+        
+        .eligibility-title {
+            font-size: 20px;
+            color: #003366;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .eligibility-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .eligibility-list li {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .eligibility-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Fee Structure */
+        .fee-section {
+            padding: 80px 40px;
+            background: white;
+        }
+        
+        .fee-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .fee-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .fee-table th {
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .fee-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .fee-table tr:hover td {
+            background: #f8fafc;
+        }
+        
+        .fee-amount {
+            font-weight: 700;
+            color: #ff9800;
+            font-size: 18px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 40px;
+            background: #f8fafc;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-question.active {
+            background: #003366;
+            color: white;
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            padding: 20px 30px;
+            max-height: 500px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Contact Support */
+        .contact-section {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+        }
+        
+        .contact-text {
+            text-align: left;
+        }
+        
+        .contact-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .contact-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .admission-hero h1 {
+                font-size: 32px;
+            }
+            
+            .admission-hero p {
+                font-size: 16px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-bar {
+                gap: 30px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 50px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                margin: 0;
+            }
+            
+            .courses-grid,
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -14,87 +587,617 @@
         <li><a href="/admission.html">Admission</a></li>
         <li><a href="/departments.html">Departments</a></li>
         <li><a href="/achievements.html">Achievements</a></li>
+        <li><a href="/apply.html">Apply Now</a></li>
     </ul>
 </nav>
 
-<!-- ===== ADMISSION INFO (WHITE) ===== -->
-<section class="admission-info">
-    <h1>Admission 2026</h1>
-    <p>
-        - Admissions are open for Undergraduate and Postgraduate programs.
-        Join Simran Engineering College to shape your future.
-    </p>
-    <a href="/apply.html" class="register-btn">Apply Now</a>
+<!-- Enhanced Hero Section -->
+<section class="admission-hero">
+    <div class="admission-hero-content">
+        <h1>Admissions 2026</h1>
+        <p>Shape your future at Simran Engineering College - Where excellence meets opportunity. Join our community of innovators and leaders.</p>
+        <div class="hero-buttons">
+            <a href="/apply.html" class="hero-btn primary">Apply Now</a>
+            <a href="#courses" class="hero-btn secondary">Explore Programs</a>
+        </div>
+    </div>
+    
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">450+</div>
+            <div class="stat-label">Seats Available</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">92%</div>
+            <div class="stat-label">Placement Rate</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">15:1</div>
+            <div class="stat-label">Student-Faculty Ratio</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Industry Partners</div>
+        </div>
+    </div>
 </section>
 
-<!-- ===== COURSES + PROCESS ===== -->
-<section class="admission-main">
+<!-- Admission Timeline -->
+<section class="timeline-section">
+    <h2 class="section-title">Admission Timeline 2026</h2>
+    <p class="section-subtitle">Important dates and milestones for the admission process</p>
+    
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">January 15 - February 28</div>
+                <h3 class="timeline-title">Application Period</h3>
+                <p class="timeline-description">Online applications open for all UG and PG programs. Submit your application with required documents and entrance exam details.</p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">March 10-15</div>
+                <h3 class="timeline-title">Entrance Examination</h3>
+                <p class="timeline-description">College-specific entrance test for merit-based admissions. JEE/CET scores also considered for eligible candidates.</p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">March 25</div>
+                <h3 class="timeline-title">Result Declaration</h3>
+                <p class="timeline-description">Merit list published based on entrance exam scores and academic performance. Shortlisted candidates notified for counseling.</p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">April 5-15</div>
+                <h3 class="timeline-title">Counseling & Seat Allocation</h3>
+                <p class="timeline-description">Document verification and seat allocation process. Candidates can choose preferred branches based on merit and availability.</p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">April 20-30</div>
+                <h3 class="timeline-title">Fee Payment & Admission Confirmation</h3>
+                <p class="timeline-description">Payment of admission fees and submission of original documents for final confirmation of admission.</p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+</section>
 
-    <!-- LEFT: COURSES OFFERED -->
-    <div class="courses">
-        <h2>Courses Offered</h2>
 
+<!-- Courses Section -->
+<section class="courses-section" id="courses">
+    <h2 class="section-title">Programs Offered</h2>
+    <p class="section-subtitle">Choose from our wide range of undergraduate and postgraduate programs</p>
+    
+    <div class="courses-grid">
         <div class="course-card">
-            <h3>B.Tech (UG)</h3>
-            <ul>
+            <div class="course-icon">🎓</div>
+            <h3 class="course-title">B.Tech (Undergraduate)</h3>
+            <ul class="course-list">
                 <li>Computer Science and Engineering</li>
                 <li>Information Science and Engineering</li>
-                <li>Electronics Engineering</li>
-                <li>Mechanical Eengineering</li>
+                <li>Electronics & Communication Engineering</li>
+                <li>Mechanical Engineering</li>
                 <li>Civil Engineering</li>
+                <li>Artificial Intelligence & Machine Learning</li>
             </ul>
         </div>
-
+        
         <div class="course-card">
-            <h3>M.Tech (PG)</h3>
-            <ul>
-                <li>Computer Science</li>
-                <li>VLSI</li>
+            <div class="course-icon">🎯</div>
+            <h3 class="course-title">M.Tech (Postgraduate)</h3>
+            <ul class="course-list">
+                <li>Computer Science Engineering</li>
+                <li>VLSI Design & Embedded Systems</li>
                 <li>Structural Engineering</li>
+                <li>Thermal Engineering</li>
+                <li>Digital Communication</li>
+                <li>Machine Learning & AI</li>
+            </ul>
+        </div>
+        
+        <div class="course-card">
+            <div class="course-icon">📊</div>
+            <h3 class="course-title">Doctoral Programs</h3>
+            <ul class="course-list">
+                <li>Ph.D in Computer Science</li>
+                <li>Ph.D in Electronics Engineering</li>
+                <li>Ph.D in Mechanical Engineering</li>
+                <li>Ph.D in Civil Engineering</li>
+                <li>Research Fellowships Available</li>
             </ul>
         </div>
     </div>
-
-    <!-- RIGHT: ADMISSION PROCESS -->
-    <div class="process">
-        <h2>Admission Process</h2>
-        <ol>
-            <li>Registration: Create an account on the college/counselling portal using a valid email/mobile number.</li>
-            <li>Application Form: Fill in personal, academic (10th/12th marks), and entrance exam details; some info auto-fills.</li>
-            <li>Document Upload: Scan and upload required documents (Photo, 10th/12th marksheet, entrance exam rank card, category/income certificates) in specified formats (JPG, PDF, etc.).</li>
-            <li>Entrance Exam & Merit: Admissions rely heavily on qualifying exams like JEE Main/Advanced, Karnataka CET, COMEDK, or university-specific tests (e.g., KNET).</li>
-            <li>Online Counselling: Participate in centralized counselling (JoSAA for IITs, KEA for Karnataka) for seat allocation based on rank.</li>
-            <li>Fee Payment: Pay application fees and then provisional admission/tuition fees online via net banking/cards after seat allotment.</li>
-            <li>Document Verification: Submit original documents at the allotted institute for final confirmation. </li>
-        </ol>
-    </div>
-
 </section>
 
+<!-- Eligibility Criteria Section -->
+<section class="eligibility-section">
+    <h2 class="section-title">Eligibility Criteria</h2>
+    <p class="section-subtitle">Check if you meet the requirements for your desired program</p>
+    
+    <div class="eligibility-grid">
+        <div class="eligibility-card">
+            <div class="eligibility-icon">🎓</div>
+            <h3 class="eligibility-title">B.Tech Programs</h3>
+            <ul class="eligibility-list">
+                <li>10+2 with PCM/PCB from recognized board</li>
+                <li>Minimum 45% marks (40% for reserved categories)</li>
+                <li>Valid JEE Main/CET/COMEDK score</li>
+                <li>Age limit: 17-25 years as on admission date</li>
+                <li>Domicile: Karnataka/All India quota available</li>
+            </ul>
+        </div>
+        
+        <div class="eligibility-card">
+            <div class="eligibility-icon">🎯</div>
+            <h3 class="eligibility-title">M.Tech Programs</h3>
+            <ul class="eligibility-list">
+                <li>B.E/B.Tech in relevant discipline</li>
+                <li>Minimum 50% marks (45% for reserved)</li>
+                <li>Valid GATE score preferred</li>
+                <li>PGCET score accepted</li>
+                <li>No age limit for postgraduate programs</li>
+            </ul>
+        </div>
+        
+        <div class="eligibility-card">
+            <div class="eligibility-icon">📚</div>
+            <h3 class="eligibility-title">Ph.D Programs</h3>
+            <ul class="eligibility-list">
+                <li>Master's degree in relevant field</li>
+                <li>Minimum 55% marks (50% for reserved)</li>
+                <li>Valid NET/GATE/UGC score</li>
+                <li>Research proposal required</li>
+                <li>Interview and presentation mandatory</li>
+            </ul>
+        </div>
+        
+        <div class="eligibility-card">
+            <div class="eligibility-icon">🌍</div>
+            <h3 class="eligibility-title">International Students</h3>
+            <ul class="eligibility-list">
+                <li>Valid student visa required</li>
+                <li>English proficiency (IELTS/TOEFL)</li>
+                <li>Equivalence certificate from AIU</li>
+                <li>NOC from concerned authorities</li>
+                <li>Separate international quota available</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-<!-- ===== FOOTER (reuse from home page) ===== -->
+<!-- Fee Structure Section -->
+<section class="fee-section">
+    <h2 class="section-title">Fee Structure 2026</h2>
+    <p class="section-subtitle">Transparent and affordable fee structure for all programs</p>
+    
+    <div class="fee-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th>Tuition Fee/Year</th>
+                    <th>Other Fees</th>
+                    <th>Total Fee/Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B.Tech CSE/ECE</td>
+                    <td>₹85,000</td>
+                    <td>₹15,000</td>
+                    <td class="fee-amount">₹100,000</td>
+                </tr>
+                <tr>
+                    <td>B.Tech ME/Civil</td>
+                    <td>₹75,000</td>
+                    <td>₹15,000</td>
+                    <td class="fee-amount">₹90,000</td>
+                </tr>
+                <tr>
+                    <td>M.Tech Programs</td>
+                    <td>₹95,000</td>
+                    <td>₹20,000</td>
+                    <td class="fee-amount">₹115,000</td>
+                </tr>
+                <tr>
+                    <td>Ph.D Programs</td>
+                    <td>₹45,000</td>
+                    <td>₹10,000</td>
+                    <td class="fee-amount">₹55,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; color: #666;">
+        <p><strong>Note:</strong> Fees are subject to revision. Scholarship options available for meritorious students.</p>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Get answers to common questions about admissions</p>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                What is the admission process for B.Tech programs?
+                <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+                The admission process involves: 1) Online application submission, 2) Entrance exam (JEE/CET/COMEDK), 3) Merit list publication, 4) Counseling and seat allocation, 5) Document verification, 6) Fee payment. The entire process is conducted online through the official admission portal.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Are scholarships available for students?
+                <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+                Yes, we offer various scholarships: Merit-based scholarships for top performers, Government scholarships for SC/ST/OBC categories, Economic scholarships for financially weak students, and Special scholarships for sports and cultural activities. Details are available on our website.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                What are the hostel facilities like?
+                <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+                We provide separate hostels for boys and girls with modern amenities including Wi-Fi, mess facilities, 24/7 security, medical facilities, recreation rooms, and study halls. Rooms are available on sharing basis (2/3/4 seaters) with option for single rooms.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                What is the placement record of the college?
+                <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+                Our college has an excellent placement record of 92% with top companies like Google, Microsoft, Amazon, Infosys, TCS, Wipro, and many MNCs visiting our campus. The highest package last year was ₹28 LPA and average package was ₹6.5 LPA.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How can I apply for admission?
+                <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+                You can apply online through our official admission portal. Fill the application form, upload required documents, pay the application fee, and submit. You'll receive updates via email and SMS about the admission process.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Support Section -->
+<section class="contact-section">
+    <div class="contact-content">
+        <h2 class="section-title" style="color: white;">Need Help? We're Here for You!</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Our admission team is ready to assist you with all your queries</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">
+                    <div class="contact-label">Call Us</div>
+                    <div class="contact-value">+91 98765 43210</div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-text">
+                    <div class="contact-label">Email Us</div>
+                    <div class="contact-value">admissions@simrancollege.edu</div>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div class="contact-text">
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">+91 87654 32109</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <a href="/apply.html" class="hero-btn primary" style="background: #ff9800; color: white;">Apply Now</a>
+            <a href="#" class="hero-btn secondary" style="border-color: white; color: white;">Download Brochure</a>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFAQ(button) {
+    const answer = button.nextElementSibling;
+    const isActive = button.classList.contains('active');
+    
+    // Close all other FAQs
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.classList.remove('active');
+        q.nextElementSibling.classList.remove('active');
+    });
+    
+    // Toggle current FAQ
+    if (!isActive) {
+        button.classList.add('active');
+        answer.classList.add('active');
+    }
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<!-- Modern Navbar Enhancement -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Set active link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || 
+            (currentPage === '' && href === '/index.html') ||
+            (currentPage === 'admission.html' && href === '/admission.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Scroll effect for navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.style.background = 'linear-gradient(135deg, rgba(0,51,102,0.95) 0%, rgba(0,85,170,0.95) 50%, rgba(0,51,102,0.95) 100%)';
+            navbar.style.backdropFilter = 'blur(15px)';
+            navbar.style.padding = '12px 40px';
+        } else {
+            navbar.style.background = 'linear-gradient(135deg, #003366 0%, #0055aa 50%, #003366 100%)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.padding = '18px 40px';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+        if (link.getAttribute('href').startsWith('#')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+    
+    // Add ripple effect on click
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.width = ripple.style.height = '40px';
+            ripple.style.top = (e.clientY - this.offsetTop - 20) + 'px';
+            ripple.style.left = (e.clientX - this.offsetLeft - 20) + 'px';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+
+<!-- Enhanced Footer -->
 <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Simran Engineering College</h3>
+            <p>Nurturing excellence in engineering education since 1985. Committed to innovation, research, and holistic development.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
         <div class="footer-section">
             <h4>Quick Links</h4>
-            <a href="/index.html">Home</a>
-            <a href="/admission.html">Admission</a>
-            <a href="/departments.html">Departments</a>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/admission.html">Admission</a></li>
+                <li><a href="/departments.html">Departments</a></li>
+                <li><a href="/achievements.html">Achievements</a></li>
+                <li><a href="/apply.html">Apply Now</a></li>
+            </ul>
         </div>
-
+        
         <div class="footer-section">
-            <h4>Contact</h4>
-            <p>Email: info@simrancollege.edu</p>
-            <p>Phone: +91 98765 43210</p>
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka 560001</p>
+            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+            <p><i class="fas fa-envelope"></i> info@simrancollege.edu</p>
         </div>
-
+        
         <div class="footer-section">
-            <h4>Follow Us</h4>
-            <p> Facebook </p>
-            <p>Twitter </p>
-            <p>Instagram</p>
+            <h4>Accreditation</h4>
+            <p>🏆 NAAC 'A+' Accredited</p>
+            <p>🔬 AICTE Approved</p>
+            <p>🎓 VTU Affiliated</p>
+            <p>🌍 ISO 9001:2015</p>
         </div>
-
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Simran Engineering College. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
 </footer>
+
+<style>
+/* Enhanced Footer Styles */
+footer {
+    background: linear-gradient(135deg, #003366, #0055aa);
+    color: white;
+    padding: 60px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff9800;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ff9800;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+    padding-left: 5px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: #ff9800;
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #ff9800;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+</style>
 
 </body>
 </html>

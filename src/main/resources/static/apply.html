@@ -2,14 +2,522 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>University Application Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/apply.css">
+    <title>Application Form 2026 - Simran Engineering College</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Enhanced Navbar */
+        nav {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            color: #ff9800;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Application Container */
+        .application-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Section */
+        .application-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .application-header h1 {
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .application-header p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .application-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff9800;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Progress Indicator */
+        .progress-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .progress-line-fill {
+            height: 100%;
+            background: #003366;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+        
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        
+        .progress-step.active .step-circle {
+            background: #003366;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress-step.completed .step-circle {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            max-width: 100px;
+        }
+        
+        .progress-step.active .step-label {
+            color: #003366;
+            font-weight: 600;
+        }
+        
+        /* Form Container */
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Form Styling */
+        .section-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            font-size: 28px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group label .required {
+            color: #f44336;
+            margin-left: 2px;
+        }
+        
+        .form-control {
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #003366;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0,51,102,0.1);
+        }
+        
+        .form-control.error {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+        
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        /* Radio and Checkbox Styling */
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            width: 18px;
+            height: 18px;
+            accent-color: #003366;
+        }
+        
+        /* File Upload Styling */
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            border: 2px dashed #003366;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload:hover .file-upload-label {
+            background: #e8f4fd;
+            border-color: #0055aa;
+        }
+        
+        .file-upload.has-file .file-upload-label {
+            background: #e8f5e8;
+            border-color: #4caf50;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,51,102,0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,51,102,0.4);
+        }
+        
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #666;
+        }
+        
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+        }
+        
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .success-icon {
+            font-size: 64px;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+        
+        .modal h2 {
+            color: #003366;
+            margin-bottom: 15px;
+        }
+        
+        .modal p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .application-container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            
+            .application-header {
+                padding: 30px 20px;
+            }
+            
+            .application-header h1 {
+                font-size: 28px;
+            }
+            
+            .application-stats {
+                gap: 20px;
+            }
+            
+            .progress-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .progress-line {
+                display: none;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAVBAR (PASTE FROM HOME PAGE) -->
-<!-- ============================ -->
+<!-- Enhanced Navbar -->
 <nav>
     <h2>Simran Engineering College</h2>
     <ul>
@@ -19,283 +527,1113 @@
         <li><a href="/achievements.html">Achievements</a></li>
     </ul>
 </nav>
-<!-- ============================ -->
 
-<h2 class="apply-title">Application for University</h2>
-<p class="subtitle">Please fill out the application form carefully</p>
-<div class="form-wrapper">
-
-    <form class="application-form" name = "applicationForm" id="applicationForm" novalidate>
-
-        <!-- Course -->
-        <div class="row">
-            <div class="form-field">
-                <label>Course</label><span>:</span>
-                <select name="course" required>
-                    <option value="">Select</option>
-                    <option value="UG">UG</option>
-                    <option value="PG">PG</option>
-                </select>
+<!-- Application Container -->
+<div class="application-container">
+    
+    <!-- Header Section -->
+    <div class="application-header">
+        <h1>Application Form 2026</h1>
+        <p>Take the first step towards your engineering career at Simran Engineering College</p>
+        <div class="application-stats">
+            <div class="stat-item">
+                <div class="stat-number">450+</div>
+                <div class="stat-label">Seats Available</div>
             </div>
-
-            <div class="form-field">
-                <label>Branch</label><span>:</span>
-                <select type="text" name="branch" placeholder="Branch" required>
-                    <option value="">Select</option>
-                    <option value="CSE">CSE</option>
-                    <option value="ME">ME</option>
-                    <option value="ECE">ECE</option>
-                </select>
+            <div class="stat-item">
+                <div class="stat-number">15-20</div>
+                <div class="stat-label">Minutes to Complete</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">92%</div>
+                <div class="stat-label">Placement Rate</div>
             </div>
         </div>
+    </div>
 
-        <!-- Student Details -->
-        <h3 class="stu-details">Student Details</h3>
-
-        <div class="row">
-            <div class="form-field">
-                <label>First Name</label><span>:</span>
-                <input type="text" placeholder="Enter first name" required name="firstName">
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+        <div class="progress-steps">
+            <div class="progress-line">
+                <div class="progress-line-fill" id="progressFill"></div>
             </div>
-
-            <div class="form-field">
-                <label>Last Name</label><span>:</span>
-                <input type="text" placeholder="Enter last name" required name="lastName">
+            <div class="progress-step active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Program Selection</div>
+            </div>
+            <div class="progress-step" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Personal Details</div>
+            </div>
+            <div class="progress-step" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Academic Info</div>
+            </div>
+            <div class="progress-step" data-step="4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Documents</div>
+            </div>
+            <div class="progress-step" data-step="5">
+                <div class="step-circle">5</div>
+                <div class="step-label">Review & Submit</div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>Date of Birth</label><span>:</span>
-                <input type="date"  name="dob">
-            </div>
+    <!-- Form Container -->
+    <div class="form-container">
+        <form id="applicationForm" name="applicationForm" novalidate>
+            
+            <!-- Step 1: Program Selection -->
+            <div class="form-section active" id="step1">
+                <h2 class="section-title">
+                    <span class="section-icon">🎓</span>
+                    Program Selection
+                </h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Course Level <span class="required">*</span></label>
+                        <select name="course" class="form-control" required>
+                            <option value="">Select Course Level</option>
+                            <option value="UG">Undergraduate (B.Tech)</option>
+                            <option value="PG">Postgraduate (M.Tech)</option>
+                            <option value="PhD">Doctoral (Ph.D)</option>
+                        </select>
+                        <span class="error-message">Please select a course level</span>
+                    </div>
 
-            <div class="form-field">
-                <label>Gender</label><span>:</span>
-                <div class="radio-group">
-                    <label><input type="radio" name="gender" value="male" required> Male</label>
-                    <label><input type="radio" name="gender" value="female"> Female</label>
+                    <div class="form-group">
+                        <label>Branch/Specialization <span class="required">*</span></label>
+                        <select name="branch" class="form-control" required>
+                            <option value="">Select Branch</option>
+                            <option value="CSE">Computer Science & Engineering</option>
+                            <option value="ECE">Electronics & Communication Engineering</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="CE">Civil Engineering</option>
+                            <option value="ISE">Information Science & Engineering</option>
+                            <option value="AI">Artificial Intelligence & ML</option>
+                        </select>
+                        <span class="error-message">Please select a branch</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Admission Category <span class="required">*</span></label>
+                        <select name="category" class="form-control" required>
+                            <option value="">Select Category</option>
+                            <option value="GM">General Merit (GM)</option>
+                            <option value="SC">Scheduled Caste (SC)</option>
+                            <option value="ST">Scheduled Tribe (ST)</option>
+                            <option value="OBC">Other Backward Classes (OBC)</option>
+                            <option value="NRI">NRI/Foreign</option>
+                        </select>
+                        <span class="error-message">Please select a category</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Entrance Exam <span class="required">*</span></label>
+                        <select name="entranceExam" class="form-control" required>
+                            <option value="">Select Entrance Exam</option>
+                            <option value="JEE">JEE Main/Advanced</option>
+                            <option value="CET">Karnataka CET</option>
+                            <option value="COMEDK">COMEDK</option>
+                            <option value="Management">Management Quota</option>
+                        </select>
+                        <span class="error-message">Please select an entrance exam</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>Phone Number</label><span>:</span>
-                <input type="tel" placeholder="Enter phone number" required name="phone">
+            <!-- Step 2: Personal Details -->
+            <div class="form-section" id="step2">
+                <h2 class="section-title">
+                    <span class="section-icon">👤</span>
+                    Personal Details
+                </h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name <span class="required">*</span></label>
+                        <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required>
+                        <span class="error-message">Please enter your first name</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name <span class="required">*</span></label>
+                        <input type="text" name="lastName" class="form-control" placeholder="Enter your last name" required>
+                        <span class="error-message">Please enter your last name</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date of Birth <span class="required">*</span></label>
+                        <input type="date" name="dob" class="form-control" required>
+                        <span class="error-message">Please enter your date of birth</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="male" required>
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="female" required>
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="other" required>
+                                <span>Other</span>
+                            </label>
+                        </div>
+                        <span class="error-message">Please select your gender</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter 10-digit phone number" pattern="[0-9]{10}" required>
+                        <span class="error-message">Please enter a valid 10-digit phone number</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                        <span class="error-message">Please enter a valid email address</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Father's Name <span class="required">*</span></label>
+                        <input type="text" name="fatherName" class="form-control" placeholder="Enter father's name" required>
+                        <span class="error-message">Please enter father's name</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mother's Name <span class="required">*</span></label>
+                        <input type="text" name="motherName" class="form-control" placeholder="Enter mother's name" required>
+                        <span class="error-message">Please enter mother's name</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-field">
-                <label>Email ID</label><span>:</span>
-                <input type="email" placeholder="Enter email address" required name="email">
-            </div>
-        </div>
+            <!-- Step 3: Academic Information -->
+            <div class="form-section" id="step3">
+                <h2 class="section-title">
+                    <span class="section-icon">📚</span>
+                    Academic Information
+                </h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>10th School/College <span class="required">*</span></label>
+                        <input type="text" name="school10th" class="form-control" placeholder="Enter your 10th school name" required>
+                        <span class="error-message">Please enter your 10th school name</span>
+                    </div>
 
-        <!-- Parents Details -->
-        <h3 class="stu-details">Parents Details</h3>
+                    <div class="form-group">
+                        <label>10th Board <span class="required">*</span></label>
+                        <select name="board10th" class="form-control" required>
+                            <option value="">Select Board</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="ICSE">ICSE</option>
+                            <option value="State">State Board</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="error-message">Please select your 10th board</span>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>Father Name</label><span>:</span>
-                <input type="text" placeholder="Enter father name" required name="fatherName">
-            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>10th Percentage <span class="required">*</span></label>
+                        <input type="number" name="percentage10th" class="form-control" placeholder="Enter percentage" min="0" max="100" step="0.1" required>
+                        <span class="error-message">Please enter valid percentage (0-100)</span>
+                    </div>
 
-            <div class="form-field">
-                <label>Mother Name</label><span>:</span>
-                <input type="text" placeholder="Enter mother name" required name="motherName">
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label>Year of Passing 10th <span class="required">*</span></label>
+                        <input type="number" name="year10th" class="form-control" placeholder="Enter year" min="2015" max="2025" required>
+                        <span class="error-message">Please enter valid year</span>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>Father Phone</label><span>:</span>
-                <input type="tel" placeholder="Enter phone number" required name="fatherPhone">
-            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>12th/PUC College <span class="required">*</span></label>
+                        <input type="text" name="college12th" class="form-control" placeholder="Enter your 12th college name" required>
+                        <span class="error-message">Please enter your 12th college name</span>
+                    </div>
 
-            <div class="form-field">
-                <label>Mother Phone</label><span>:</span>
-                <input type="tel" placeholder="Enter phone number" name="motherPhone">
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label>12th Board <span class="required">*</span></label>
+                        <select name="board12th" class="form-control" required>
+                            <option value="">Select Board</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="ICSE">ICSE</option>
+                            <option value="State">State Board</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="error-message">Please select your 12th board</span>
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>Father Email</label><span>:</span>
-                <input type="email" placeholder="Enter email" name="fatherEmail">
-            </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>12th Percentage <span class="required">*</span></label>
+                        <input type="number" name="percentage12th" class="form-control" placeholder="Enter percentage" min="0" max="100" step="0.1" required>
+                        <span class="error-message">Please enter valid percentage (0-100)</span>
+                    </div>
 
-            <div class="form-field">
-                <label>Mother Email</label><span>:</span>
-                <input type="email" placeholder="Enter email" name="motherEmail">
-            </div>
-        </div>
-
-        <!-- Education Background -->
-        <h3 class="stu-details">Education Background</h3>
-
-        <div class="row">
-            <div class="form-field">
-                <label>College (PU/Diploma)</label><span>:</span>
-                <input type="text" placeholder="School / College name" required name="college">
-            </div>
-
-            <div class="form-field">
-                <label>Study Field</label><span>:</span>
-                <input type="text" placeholder="Science / Commerce / Diploma" required name="studyField">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-field">
-                <label>Date of Graduation</label><span>:</span>
-                <input type="date" required name="dateOfGrad">
-            </div>
-
-            <div class="form-field">
-                <label>GPA / Percentage</label><span>:</span>
-                <input type="text" placeholder="Enter GPA or %" required name="GPAPercentage">
-            </div>
-        </div>
-
-        <!-- Address -->
-        <h3 class="stu-details">Address</h3>
-
-        <div class="row">
-            <div class="form-field">
-                <label>Address Line 1</label><span>:</span>
-                <input type="text" placeholder="House No, Street" required name="addressLine1">
+                    <div class="form-group">
+                        <label>Year of Passing 12th <span class="required">*</span></label>
+                        <input type="number" name="year12th" class="form-control" placeholder="Enter year" min="2018" max="2025" required>
+                        <span class="error-message">Please enter valid year</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-field">
-                <label>Address Line 2</label><span>:</span>
-                <input type="text" placeholder="Area / Landmark" name="addressLine2">
+            <!-- Step 4: Document Upload -->
+            <div class="form-section" id="step4">
+                <h2 class="section-title">
+                    <span class="section-icon">📎</span>
+                    Document Upload
+                </h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Photograph <span class="required">*</span></label>
+                        <div class="file-upload" id="photoUpload">
+                            <input type="file" name="photo" accept="image/*" required>
+                            <div class="file-upload-label">
+                                <span>📷</span>
+                                <span>Click to upload photograph</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="photoInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="photoName"></span>
+                        </div>
+                        <span class="error-message">Please upload your photograph</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Signature <span class="required">*</span></label>
+                        <div class="file-upload" id="signatureUpload">
+                            <input type="file" name="signature" accept="image/*" required>
+                            <div class="file-upload-label">
+                                <span>✍️</span>
+                                <span>Click to upload signature</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="signatureInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="signatureName"></span>
+                        </div>
+                        <span class="error-message">Please upload your signature</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>10th Marksheet <span class="required">*</span></label>
+                        <div class="file-upload" id="sslcUpload">
+                            <input type="file" name="sslc" accept="image/*,pdf" required>
+                            <div class="file-upload-label">
+                                <span>📄</span>
+                                <span>Click to upload 10th marksheet</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="sslcInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="sslcName"></span>
+                        </div>
+                        <span class="error-message">Please upload 10th marksheet</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>12th/PUC Marksheet <span class="required">*</span></label>
+                        <div class="file-upload" id="pucUpload">
+                            <input type="file" name="puc" accept="image/*,pdf" required>
+                            <div class="file-upload-label">
+                                <span>📄</span>
+                                <span>Click to upload 12th marksheet</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="pucInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="pucName"></span>
+                        </div>
+                        <span class="error-message">Please upload 12th marksheet</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Aadhar Card</label>
+                        <div class="file-upload" id="aadharUpload">
+                            <input type="file" name="aadhar" accept="image/*,pdf">
+                            <div class="file-upload-label">
+                                <span>🆔</span>
+                                <span>Click to upload Aadhar card (Optional)</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="aadharInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="aadharName"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Income Certificate</label>
+                        <div class="file-upload" id="incomeUpload">
+                            <input type="file" name="income" accept="image/*,pdf">
+                            <div class="file-upload-label">
+                                <span>💰</span>
+                                <span>Click to upload income certificate (Optional)</span>
+                            </div>
+                        </div>
+                        <div class="file-info" id="incomeInfo" style="display: none;">
+                            <span>📄</span>
+                            <span id="incomeName"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="form-field">
-                <label>City</label><span>:</span>
-                <input type="text" placeholder="City" required name="city">
+            <!-- Step 5: Review & Submit -->
+            <div class="form-section" id="step5">
+                <h2 class="section-title">
+                    <span class="section-icon">✅</span>
+                    Review & Submit
+                </h2>
+                
+                <div class="review-section">
+                    <h3>Application Summary</h3>
+                    <div id="reviewContent">
+                        <!-- Review content will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="termsCheckbox" required>
+                        <label for="termsCheckbox">
+                            I hereby declare that all the information provided above is true and correct to the best of my knowledge. I understand that any false information may lead to cancellation of my admission.
+                        </label>
+                    </div>
+                    <span class="error-message">Please accept the terms and conditions</span>
+                </div>
             </div>
 
-            <div class="form-field">
-                <label>State</label><span>:</span>
-                <input type="text" placeholder="State" required name="state">
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+                    <span>←</span> Previous
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
+                    Next <span>→</span>
+                </button>
+                <button type="button" class="btn btn-success" id="submitBtn" onclick="submitApplication()" style="display: none;">
+                    <span>✓</span> Submit Application
+                </button>
             </div>
+        </form>
+    </div>
+</div>
 
-            <div class="form-field">
-                <label>Country</label><span>:</span>
-                <input type="text" placeholder="Country" required name="country">
-            </div>
-
-            <div class="form-field">
-                <label>Pin Code</label><span>:</span>
-                <input type="text" placeholder="Pin code" required name="pinCode">
-            </div>
-        </div>
-
-        <!-- Upload Documents -->
-        <h3 class="stu-details">Upload Documents</h3>
-
-        <div class="row">
-            <div class="form-field">
-                <label>Aadhar</label><span>:</span>
-                <input type="file"  name="aadhar">
-            </div>
-
-            <div class="form-field">
-                <label>Income Certificate</label><span>:</span>
-                <input type="file" name="income">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-field">
-                <label>SSLC Marks Card</label><span>:</span>
-                <input type="file"  name="sslc">
-            </div>
-
-            <div class="form-field">
-                <label>PUC/Diploma Marks Card</label><span>:</span>
-                <input type="file"  name="pucDiploma">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-field">
-                <label>Leaving Certificate</label><span>:</span>
-                <input type="file" name="leavingCertificate">
-            </div>
-        </div>
-
-        <!-- Rules -->
-        <h3 class="stu-details">Rules and Regulations</h3>
-
-        <div class="checkbox-field">
-            <input type="checkbox" >
-            <span>I agree to the rules and regulations of the university.</span>
-        </div>
-
-        <button type="button" onclick="submitApplication()">
-            Submit Application
-        </button>
-
-    </form>
+<!-- Success Modal -->
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <div class="success-icon">✓</div>
+        <h2>Application Submitted Successfully!</h2>
+        <p>Thank you for applying to Simran Engineering College. Your application has been received and is under review. You will receive a confirmation email shortly with your application details.</p>
+        <p><strong>Application ID:</strong> <span id="applicationId"></span></p>
+        <button class="btn btn-primary" onclick="closeModal()">Continue to Home</button>
+    </div>
 </div>
 
 <script>
-    function submitApplication() {
+// Multi-step form functionality
+let currentStep = 1;
+const totalSteps = 5;
 
-        const form = document.getElementById("applicationForm");
+// Initialize form
+document.addEventListener('DOMContentLoaded', function() {
+    initializeFileUploads();
+    updateProgressBar();
+    showStep(currentStep);
+});
 
-        if (!form) {
-            alert("Form not found");
-            return;
-        }
-
-        const data = {
-        course: form.elements["course"]?.value || "",
-        branch: form.elements["branch"]?.value || "",
-        firstName: form.elements["firstName"]?.value || "",
-        lastName: form.elements["lastName"]?.value || "",
-        phone: form.elements["phone"]?.value || "",
-        email: form.elements["email"]?.value || "",
-        city: form.elements["city"]?.value || "",
-        state: form.elements["state"]?.value || "",
-        country: form.elements["country"]?.value || "",
-        pincode: form.elements["pinCode"]?.value || "",
-        dob: form.elements["dob"]?.value || "",
-        fatherName: form.elements["fatherName"]?.value || "",
-        motherName: form.elements["motherName"]?.value || "",
-        gender: form.elements["gender"]?.value || "",
-        addressLine1: form.elements["addressLine2"]?.value || "",
-        addressLine2: form.elements["addressLine2"]?.value || "",
-        fatherPhone: form.elements["fatherPhone"]?.value || "",
-        motherPhone: form.elements["motherPhone"]?.value || "",
-        motherEmail: form.elements["motherEmail"]?.value || "",
-        fatherEmail: form.elements["fatherEmail"]?.value || ""
-        };
-
-        fetch("/api/applications", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(res => {
-            if (!res.ok) throw new Error("Failed");
-            return res.json();
-        })
-        .then(() => {
-            alert("Application submitted successfully!");
-            form.reset();
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Submission failed");
-        });
+// Step navigation
+function changeStep(direction) {
+    if (direction === 1 && !validateCurrentStep()) {
+        return;
     }
+    
+    // Hide current step
+    document.getElementById(`step${currentStep}`).classList.remove('active');
+    
+    // Update current step
+    currentStep += direction;
+    
+    // Show new step
+    showStep(currentStep);
+    updateProgressBar();
+    
+    // Update navigation buttons
+    updateNavigationButtons();
+    
+    // If moving to review step, populate review content
+    if (currentStep === 5) {
+        populateReviewContent();
+    }
+}
+
+function showStep(step) {
+    // Hide all steps
+    document.querySelectorAll('.form-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show current step
+    document.getElementById(`step${step}`).classList.add('active');
+    
+    // Update progress steps
+    document.querySelectorAll('.progress-step').forEach((stepEl, index) => {
+        stepEl.classList.remove('active', 'completed');
+        if (index + 1 < step) {
+            stepEl.classList.add('completed');
+        } else if (index + 1 === step) {
+            stepEl.classList.add('active');
+        }
+    });
+}
+
+function updateProgressBar() {
+    const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+    document.getElementById('progressFill').style.width = progress + '%';
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    // Show/hide previous button
+    prevBtn.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+    
+    // Show/hide next and submit buttons
+    if (currentStep === totalSteps) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-flex';
+    } else {
+        nextBtn.style.display = 'inline-flex';
+        submitBtn.style.display = 'none';
+    }
+}
+
+// Form validation
+function validateCurrentStep() {
+    const currentStepElement = document.getElementById(`step${currentStep}`);
+    const requiredFields = currentStepElement.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        const errorMessage = field.parentElement.querySelector('.error-message');
+        
+        if (!field.value.trim()) {
+            field.classList.add('error');
+            if (errorMessage) errorMessage.classList.add('show');
+            isValid = false;
+        } else {
+            field.classList.remove('error');
+            if (errorMessage) errorMessage.classList.remove('show');
+        }
+        
+        // Additional validation for specific field types
+        if (field.type === 'email' && field.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                field.classList.add('error');
+                if (errorMessage) {
+                    errorMessage.textContent = 'Please enter a valid email address';
+                    errorMessage.classList.add('show');
+                }
+                isValid = false;
+            }
+        }
+        
+        if (field.type === 'tel' && field.value) {
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(field.value)) {
+                field.classList.add('error');
+                if (errorMessage) {
+                    errorMessage.textContent = 'Please enter a valid 10-digit phone number';
+                    errorMessage.classList.add('show');
+                }
+                isValid = false;
+            }
+        }
+    });
+    
+    // Validate radio buttons
+    const radioGroups = currentStepElement.querySelectorAll('input[type="radio"][required]');
+    radioGroups.forEach(radio => {
+        const name = radio.name;
+        const checked = currentStepElement.querySelector(`input[name="${name}"]:checked`);
+        const errorMessage = radio.closest('.form-group').querySelector('.error-message');
+        
+        if (!checked) {
+            if (errorMessage) errorMessage.classList.add('show');
+            isValid = false;
+        } else {
+            if (errorMessage) errorMessage.classList.remove('show');
+        }
+    });
+    
+    // Validate checkbox for terms and conditions
+    if (currentStep === 5) {
+        const termsCheckbox = document.getElementById('termsCheckbox');
+        const errorMessage = termsCheckbox.closest('.form-group').querySelector('.error-message');
+        
+        if (!termsCheckbox.checked) {
+            if (errorMessage) errorMessage.classList.add('show');
+            isValid = false;
+        } else {
+            if (errorMessage) errorMessage.classList.remove('show');
+        }
+    }
+    
+    if (!isValid) {
+        // Scroll to first error
+        const firstError = currentStepElement.querySelector('.error');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+    
+    return isValid;
+}
+
+// File upload functionality
+function initializeFileUploads() {
+    const fileUploads = document.querySelectorAll('.file-upload input[type="file"]');
+    
+    fileUploads.forEach(upload => {
+        upload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const fileUploadDiv = e.target.closest('.file-upload');
+            const fileInfo = fileUploadDiv.nextElementSibling;
+            const fileName = fileInfo.querySelector('span:last-child');
+            
+            if (file) {
+                fileUploadDiv.classList.add('has-file');
+                fileInfo.style.display = 'flex';
+                fileName.textContent = file.name;
+                
+                // Update file upload label
+                const label = fileUploadDiv.querySelector('.file-upload-label span:last-child');
+                label.textContent = file.name;
+            } else {
+                fileUploadDiv.classList.remove('has-file');
+                fileInfo.style.display = 'none';
+                
+                // Reset file upload label
+                const label = fileUploadDiv.querySelector('.file-upload-label span:last-child');
+                const originalText = label.id === 'photoName' ? 'Click to upload photograph' :
+                                  label.id === 'signatureName' ? 'Click to upload signature' :
+                                  label.id === 'sslcName' ? 'Click to upload 10th marksheet' :
+                                  label.id === 'pucName' ? 'Click to upload 12th marksheet' :
+                                  label.id === 'aadharName' ? 'Click to upload Aadhar card (Optional)' :
+                                  'Click to upload income certificate (Optional)';
+                label.textContent = originalText;
+            }
+        });
+    });
+}
+
+// Review content population
+function populateReviewContent() {
+    const form = document.getElementById('applicationForm');
+    const reviewContent = document.getElementById('reviewContent');
+    
+    const formData = {
+        'Course Level': form.course.value,
+        'Branch': form.branch.value,
+        'Category': form.category.value,
+        'Entrance Exam': form.entranceExam.value,
+        'Name': `${form.firstName.value} ${form.lastName.value}`,
+        'Date of Birth': form.dob.value,
+        'Gender': form.gender.value,
+        'Phone': form.phone.value,
+        'Email': form.email.value,
+        'Father\'s Name': form.fatherName.value,
+        'Mother\'s Name': form.motherName.value,
+        '10th School': form.school10th.value,
+        '10th Board': form.board10th.value,
+        '10th Percentage': form.percentage10th.value + '%',
+        '12th College': form.college12th.value,
+        '12th Board': form.board12th.value,
+        '12th Percentage': form.percentage12th.value + '%'
+    };
+    
+    let reviewHTML = '<div class="review-grid">';
+    
+    for (const [key, value] of Object.entries(formData)) {
+        if (value) {
+            reviewHTML += `
+                <div class="review-item">
+                    <strong>${key}:</strong> ${value}
+                </div>
+            `;
+        }
+    }
+    
+    reviewHTML += '</div>';
+    
+    // Add uploaded files info
+    const uploadedFiles = [];
+    form.querySelectorAll('input[type="file"]').forEach(input => {
+        if (input.files.length > 0) {
+            uploadedFiles.push(input.name + ': ' + input.files[0].name);
+        }
+    });
+    
+    if (uploadedFiles.length > 0) {
+        reviewHTML += '<h4>Uploaded Documents:</h4><ul>';
+        uploadedFiles.forEach(file => {
+            reviewHTML += `<li>${file}</li>`;
+        });
+        reviewHTML += '</ul>';
+    }
+    
+    reviewContent.innerHTML = reviewHTML;
+}
+
+// Submit application
+function submitApplication() {
+    if (!validateCurrentStep()) {
+        return;
+    }
+    
+    const form = document.getElementById('applicationForm');
+    const formData = new FormData(form);
+    
+    // Convert FormData to JSON for API call
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+        if (value instanceof File) {
+            data[key] = value.name;
+        } else {
+            data[key] = value;
+        }
+    }
+    
+    // Show loading state
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>⏳</span> Submitting...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call
+    fetch("/api/applications", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("Failed");
+        return res.json();
+    })
+    .then(response => {
+        // Show success modal
+        showSuccessModal();
+        
+        // Reset form
+        form.reset();
+        currentStep = 1;
+        showStep(1);
+        updateProgressBar();
+        updateNavigationButtons();
+        
+        // Reset file uploads
+        document.querySelectorAll('.file-upload').forEach(upload => {
+            upload.classList.remove('has-file');
+            upload.nextElementSibling.style.display = 'none';
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Submission failed. Please try again.');
+    })
+    .finally(() => {
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
+// Success modal
+function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    const applicationId = 'SEC' + Date.now().toString().slice(-8);
+    document.getElementById('applicationId').textContent = applicationId;
+    modal.classList.add('show');
+}
+
+function closeModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('show');
+    window.location.href = '/index.html';
+}
+
+// Progress step click navigation
+document.querySelectorAll('.progress-step').forEach(step => {
+    step.addEventListener('click', function() {
+        const targetStep = parseInt(this.dataset.step);
+        if (targetStep < currentStep || validateCurrentStep()) {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep = targetStep;
+            showStep(currentStep);
+            updateProgressBar();
+            updateNavigationButtons();
+            
+            if (currentStep === 5) {
+                populateReviewContent();
+            }
+        }
+    });
+});
+
+// Real-time validation
+document.querySelectorAll('.form-control').forEach(input => {
+    input.addEventListener('blur', function() {
+        if (this.hasAttribute('required') && !this.value.trim()) {
+            this.classList.add('error');
+            const errorMessage = this.parentElement.querySelector('.error-message');
+            if (errorMessage) errorMessage.classList.add('show');
+        } else {
+            this.classList.remove('error');
+            const errorMessage = this.parentElement.querySelector('.error-message');
+            if (errorMessage) errorMessage.classList.remove('show');
+        }
+    });
+    
+    input.addEventListener('focus', function() {
+        this.classList.remove('error');
+        const errorMessage = this.parentElement.querySelector('.error-message');
+        if (errorMessage) errorMessage.classList.remove('show');
+    });
+});
+
+// Add review section styles
+const reviewStyles = `
+    <style>
+        .review-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .review-section h3 {
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .review-section h4 {
+            color: #003366;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .review-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #003366;
+        }
+        
+        .review-item strong {
+            color: #003366;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .review-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .review-section li {
+            background: white;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border-left: 3px solid #4caf50;
+        }
+    </style>
+`;
+
+document.head.insertAdjacentHTML('beforeend', reviewStyles);
+</script>
+
+<!-- Enhanced Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Simran Engineering College</h3>
+            <p>Nurturing excellence in engineering education since 1985. Committed to innovation, research, and holistic development.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/admission.html">Admission</a></li>
+                <li><a href="/departments.html">Departments</a></li>
+                <li><a href="/achievements.html">Achievements</a></li>
+                <li><a href="/apply.html">Apply Now</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka 560001</p>
+            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+            <p><i class="fas fa-envelope"></i> info@simrancollege.edu</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Accreditation</h4>
+            <p>🏆 NAAC 'A+' Accredited</p>
+            <p>🔬 AICTE Approved</p>
+            <p>🎓 VTU Affiliated</p>
+            <p>🌍 ISO 9001:2015</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Simran Engineering College. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+</footer>
+
+<style>
+/* Enhanced Footer Styles */
+footer {
+    background: linear-gradient(135deg, #003366, #0055aa);
+    color: white;
+    padding: 60px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff9800;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ff9800;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ff9800;
+    padding-left: 5px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: #ff9800;
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #ff9800;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+</style>
+
+<!-- Modern Navbar Enhancement -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Set active link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || 
+            (currentPage === '' && href === '/index.html') ||
+            (currentPage === 'apply.html' && href === '/apply.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Scroll effect for navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.style.background = 'linear-gradient(135deg, rgba(0,51,102,0.95) 0%, rgba(0,85,170,0.95) 50%, rgba(0,51,102,0.95) 100%)';
+            navbar.style.backdropFilter = 'blur(15px)';
+            navbar.style.padding = '12px 40px';
+        } else {
+            navbar.style.background = 'linear-gradient(135deg, #003366 0%, #0055aa 50%, #003366 100%)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.padding = '18px 40px';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+        if (link.getAttribute('href').startsWith('#')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+    
+    // Add ripple effect on click
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.width = ripple.style.height = '40px';
+            ripple.style.top = (e.clientY - this.offsetTop - 20) + 'px';
+            ripple.style.left = (e.clientX - this.offsetLeft - 20) + 'px';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
 </script>
 
 

@@ -1,8 +1,468 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Simran Engineering College</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simran Engineering College - Excellence in Technical Education</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Enhanced Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,51,102,0.4), rgba(0,51,102,0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 3;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-btn.primary {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .cta-btn.primary:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,152,0,0.3);
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-btn.secondary:hover {
+            background: white;
+            color: #003366;
+            transform: translateY(-2px);
+        }
+        
+        /* Campus Facilities Section */
+        .facilities {
+            padding: 80px 40px;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .facility-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .facility-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .facility-card h3 {
+            font-size: 22px;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+        
+        .facility-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Statistics Section */
+        .statistics {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            padding: 80px 40px;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 40px;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* News Section */
+        .news-events {
+            padding: 80px 40px;
+            background: #f8fafc;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-date {
+            color: #ff9800;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 20px;
+            color: #003366;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .news-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #003366;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+        
+        .read-more:hover {
+            gap: 10px;
+        }
+        
+        /* About Highlights */
+        .about-highlights {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,51,102,0.1);
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        
+        .highlight-item:hover {
+            transform: translateY(-2px);
+            background: rgba(0,51,102,0.15);
+        }
+        
+        .highlight-icon {
+            font-size: 20px;
+        }
+        
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff9800;
+        }
+        
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #ff9800;
+        }
+        
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #ff9800;
+            padding-left: 5px;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #ff9800;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #ff9800;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .facilities,
+            .statistics,
+            .testimonials,
+            .news-events {
+                padding: 60px 20px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -13,6 +473,7 @@
         <li><a href="/admission.html">Admission</a></li>
         <li><a href="/departments.html">Departments</a></li>
         <li><a href="/achievements.html">Achievements</a></li>
+        <li><a href="/apply.html">Apply Now</a></li>
     </ul>
 </nav>
 
@@ -20,6 +481,17 @@
     <img src="/images/clg2.jpeg" class="slide active">
     <img src="/images/clg7.jpg" class="slide">
     <img src="/images/clg5.png" class="slide">
+    
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>Welcome to Simran Engineering College</h1>
+            <p>Empowering Future Engineers with Excellence in Education</p>
+            <div class="cta-buttons">
+                <a href="/admission.html" class="cta-btn primary">Apply Now</a>
+                <a href="/departments.html" class="cta-btn secondary">Explore Departments</a>
+            </div>
+        </div>
+    </div>
 </section>
 
 <div class="notification-bar">
@@ -42,15 +514,30 @@
         <p>
             Simran Engineering College is committed to delivering quality
             technical education with a strong focus on innovation, research,
-            and societal development.
-            Simran Engineering College is committed to delivering quality
-            technical education with a strong focus on innovation, research,
-            and societal development.Simran Engineering College is committed to delivering quality
-            technical education with a strong focus on innovation, research,
-            and societal development.Simran Engineering College is committed to delivering quality
-            technical education with a strong focus on innovation, research,
-            and societal development.
+            and societal development. Established with a vision to nurture
+            future engineers, we provide state-of-the-art infrastructure,
+            experienced faculty, and industry-relevant curriculum.
         </p>
+        <p>
+            Our mission is to create a learning environment that fosters
+            creativity, critical thinking, and professional excellence.
+            We strive to produce engineers who are not only technically
+            proficient but also socially responsible and ethically sound.
+        </p>
+        <div class="about-highlights">
+            <div class="highlight-item">
+                <span class="highlight-icon">🎓</span>
+                <span>15+ Years of Excellence</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-icon">🏆</span>
+                <span>Award-Winning Institution</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-icon">🔬</span>
+                <span>Advanced Research Facilities</span>
+            </div>
+        </div>
     </div>
 
 
@@ -91,32 +578,307 @@
 
 </section>
 
+<!-- Campus Facilities Section -->
+<section class="facilities">
+    <h2 class="section-title">Campus Facilities</h2>
+    <p class="section-subtitle">State-of-the-art infrastructure designed for holistic learning and development</p>
+    
+    <div class="facilities-grid">
+        <div class="facility-card">
+            <div class="facility-icon">🏛️</div>
+            <h3>Modern Classrooms</h3>
+            <p>Smart classrooms equipped with projectors, interactive boards, and modern teaching aids for enhanced learning experience.</p>
+        </div>
+        
+        <div class="facility-card">
+            <div class="facility-icon">🔬</div>
+            <h3>Advanced Laboratories</h3>
+            <p>Well-equipped labs with latest equipment and software for hands-on training and research activities.</p>
+        </div>
+        
+        <div class="facility-card">
+            <div class="facility-icon">📚</div>
+            <h3>Central Library</h3>
+            <p>Extensive collection of books, journals, and digital resources with peaceful study environment.</p>
+        </div>
+        
+        <div class="facility-card">
+            <div class="facility-icon">🏃</div>
+            <h3>Sports Complex</h3>
+            <p>Indoor and outdoor sports facilities including gymnasium, playgrounds, and courts for various sports.</p>
+        </div>
+        
+        <div class="facility-card">
+            <div class="facility-icon">🏥</div>
+            <h3>Medical Center</h3>
+            <p>On-campus medical facility with qualified doctors and emergency services for student healthcare.</p>
+        </div>
+        
+        <div class="facility-card">
+            <div class="facility-icon">🏨</div>
+            <h3>Hostel Facilities</h3>
+            <p>Comfortable and secure hostel accommodation with modern amenities for both boys and girls.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics">
+    <h2 class="section-title" style="color: white;">Our Achievements in Numbers</h2>
+    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Reflecting our commitment to excellence and growth</p>
+    
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Alumni Worldwide</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">450</div>
+            <div class="stat-label">Current Students</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">92%</div>
+            <div class="stat-label">Placement Rate</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Industry Partners</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">25</div>
+            <div class="stat-label">Research Papers Published</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">15</div>
+            <div class="stat-label">Awards Won</div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <h2 class="section-title">What Our Students Say</h2>
+    <p class="section-subtitle">Real experiences from our student community</p>
+    
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-text">
+                "Simran Engineering College provided me with the perfect foundation for my career. The practical approach to learning and excellent faculty support helped me secure my dream job at a multinational company."
+            </div>
+            <div class="testimonial-author">
+                <img src="/images/student1.jpeg" alt="Student" class="author-image">
+                <div class="author-info">
+                    <h4>Rahul Kumar</h4>
+                    <p>CSE Batch 2023, Software Engineer at Tech Corp</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-card">
+            <div class="testimonial-text">
+                "The research opportunities and industry exposure at Simran College were exceptional. The labs are well-equipped, and the faculty encourages innovative thinking. I'm proud to be an alumna of this institution."
+            </div>
+            <div class="testimonial-author">
+                <img src="/images/student2.jpg" alt="Student" class="author-image">
+                <div class="author-info">
+                    <h4>Priya Sharma</h4>
+                    <p>ECE Batch 2022, Hardware Engineer at Innovate Labs</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-card">
+            <div class="testimonial-text">
+                "The campus life and extracurricular activities helped me develop not just technical skills but also leadership qualities. The placement cell provided excellent training and support throughout the recruitment process."
+            </div>
+            <div class="testimonial-author">
+                <img src="/images/student3.jpg" alt="Student" class="author-image">
+                <div class="author-info">
+                    <h4>Amit Patel</h4>
+                    <p>ME Batch 2023, Design Engineer at AutoTech</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News & Events Section -->
+<section class="news-events">
+    <h2 class="section-title">Latest News & Events</h2>
+    <p class="section-subtitle">Stay updated with campus happenings and achievements</p>
+    
+    <div class="news-grid">
+        <div class="news-card">
+            <img src="/images/gallery1.jpg" alt="Hackathon" class="news-image">
+            <div class="news-content">
+                <div class="news-date">February 15, 2026</div>
+                <h3 class="news-title">Students Win State-Level Hackathon</h3>
+                <p class="news-description">Our team of CSE students secured first place in the inter-college hackathon competition, developing an innovative healthcare solution.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="/images/gallery2.jpg" alt="Workshop" class="news-image">
+            <div class="news-content">
+                <div class="news-date">February 10, 2026</div>
+                <h3 class="news-title">Industry Expert Workshop on AI/ML</h3>
+                <p class="news-description">Leading industry professionals conducted a hands-on workshop on Artificial Intelligence and Machine Learning trends and applications.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="/images/gallery3.jpg" alt="Sports" class="news-image">
+            <div class="news-content">
+                <div class="news-date">February 5, 2026</div>
+                <h3 class="news-title">Annual Sports Meet 2026</h3>
+                <p class="news-description">Three-day sports extravaganza concluded with our college winning multiple trophies in various inter-college competitions.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    <div class="footer-section">
-        <h4>Quick Links</h4>
-        <a href="/index.html">Home</a>
-        <a href="/admission.html">Admission</a>
-        <a href="/departments.html">Departments</a>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Simran Engineering College</h3>
+            <p>Nurturing excellence in engineering education since 1985. Committed to innovation, research, and holistic development.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/admission.html">Admission</a></li>
+                <li><a href="/departments.html">Departments</a></li>
+                <li><a href="/achievements.html">Achievements</a></li>
+                <li><a href="/apply.html">Apply Now</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka 560001</p>
+            <p><i class="fas fa-phone"></i> +91 80 1234 5678</p>
+            <p><i class="fas fa-envelope"></i> info@simrancollege.edu</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Accreditation</h4>
+            <p>🏆 NAAC 'A+' Accredited</p>
+            <p>🔬 AICTE Approved</p>
+            <p>🎓 VTU Affiliated</p>
+            <p>🌍 ISO 9001:2015</p>
+        </div>
     </div>
-
-    <div class="footer-section">
-        <h4>Contact</h4>
-        <p>Email: info@simrancollege.edu</p>
-        <p>Phone: +91 98765 43210</p>
-    </div>
-
-    <div class="footer-section">
-        <h4>Follow Us</h4>
-        <p> Facebook </p>
-        <p>Twitter </p>
-        <p>Instagram</p>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Simran Engineering College. All rights reserved. | Privacy Policy | Terms of Service</p>
     </div>
 </footer>
 
 
 
 <script src="/js/app.js"></script>
+
+<script>
+// Modern Navbar Enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // Set active link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || 
+            (currentPage === '' && href === '/index.html') ||
+            (currentPage === 'index.html' && href === '/index.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Scroll effect for navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            navbar.style.background = 'linear-gradient(135deg, rgba(0,51,102,0.95) 0%, rgba(0,85,170,0.95) 50%, rgba(0,51,102,0.95) 100%)';
+            navbar.style.backdropFilter = 'blur(15px)';
+            navbar.style.padding = '12px 40px';
+        } else {
+            navbar.style.background = 'linear-gradient(135deg, #003366 0%, #0055aa 50%, #003366 100%)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.padding = '18px 40px';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Smooth scroll for anchor links
+    navLinks.forEach(link => {
+        if (link.getAttribute('href').startsWith('#')) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    });
+    
+    // Add ripple effect on click
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.width = ripple.style.height = '40px';
+            ripple.style.top = (e.clientY - this.offsetTop - 20) + 'px';
+            ripple.style.left = (e.clientX - this.offsetLeft - 20) + 'px';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Add ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
 
 
 </body>

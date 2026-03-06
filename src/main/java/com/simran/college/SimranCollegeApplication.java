@@ -10,3 +10,4 @@ public class SimranCollegeApplication {
         SpringApplication.run(SimranCollegeApplication.class, args);
     }
 }
+ 
